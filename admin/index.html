@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel · Jeenashera</title>
+    <meta name="robots" content="noindex, nofollow" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="/admin/style.css" />
+</head>
+<body>
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <img src="/logo.svg" alt="Jeenashera" class="brand-logo" />
+            <span class="brand-name">Jeenashera</span>
+            <span class="brand-tag">Admin</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <i class="fas fa-th-large"></i> Dashboard
+            </a>
+            <a href="#" class="nav-item" data-page="downloads">
+                <i class="fas fa-download"></i> Downloads
+            </a>
+            <a href="#" class="nav-item" data-page="visitors">
+                <i class="fas fa-users"></i> Visitors
+            </a>
+            <a href="#" class="nav-item" data-page="settings">
+                <i class="fas fa-cog"></i> Settings
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn-reset-data" id="resetDataBtn">
+                <i class="fas fa-trash-alt"></i> Reset Data
+            </button>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="main-content">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="pageTitle">Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <span class="live-badge">
+                    <span class="live-dot"></span> Live
+                </span>
+                <span class="last-updated" id="lastUpdated">Loading...</span>
+            </div>
+        </header>
+
+        <!-- ===== DASHBOARD PAGE ===== -->
+        <section class="page active" id="page-dashboard">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="totalVisitors">0</span>
+                        <span class="stat-label">Total Visitors</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-download"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="totalDownloads">0</span>
+                        <span class="stat-label">Total Downloads</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="todayVisitors">0</span>
+                        <span class="stat-label">Today's Visitors</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-arrow-down"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-number" id="todayDownloads">0</span>
+                        <span class="stat-label">Today's Downloads</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-line"></i> Visitors (Last 7 Days)</h3>
+                    <canvas id="visitorChart" height="200"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3><i class="fas fa-chart-bar"></i> Downloads (Last 7 Days)</h3>
+                    <canvas id="downloadChart" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="activity-card">
+                <h3><i class="fas fa-clock"></i> Recent Activity</h3>
+                <div class="activity-list" id="activityList">
+                    <div class="activity-empty">No activity yet</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== DOWNLOADS PAGE ===== -->
+        <section class="page" id="page-downloads">
+            <h2><i class="fas fa-download"></i> Download Analytics</h2>
+            <div class="download-stats">
+                <div class="download-stat-item">
+                    <span class="stat-label">Total Downloads</span>
+                    <span class="stat-value" id="dlTotal">0</span>
+                </div>
+                <div class="download-stat-item">
+                    <span class="stat-label">Today</span>
+                    <span class="stat-value" id="dlToday">0</span>
+                </div>
+                <div class="download-stat-item">
+                    <span class="stat-label">This Week</span>
+                    <span class="stat-value" id="dlWeek">0</span>
+                </div>
+                <div class="download-stat-item">
+                    <span class="stat-label">This Month</span>
+                    <span class="stat-value" id="dlMonth">0</span>
+                </div>
+            </div>
+            <div class="download-list">
+                <h4>Download History</h4>
+                <table class="download-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Device</th>
+                            <th>Country</th>
+                        </tr>
+                    </thead>
+                    <tbody id="downloadTableBody">
+                        <tr><td colspan="4" style="text-align:center;color:#8a8a9e;">No downloads yet</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== VISITORS PAGE ===== -->
+        <section class="page" id="page-visitors">
+            <h2><i class="fas fa-users"></i> Visitor Analytics</h2>
+            <div class="visitor-stats">
+                <div class="visitor-stat-item">
+                    <span class="stat-label">Total Visitors</span>
+                    <span class="stat-value" id="visTotal">0</span>
+                </div>
+                <div class="visitor-stat-item">
+                    <span class="stat-label">Today</span>
+                    <span class="stat-value" id="visToday">0</span>
+                </div>
+                <div class="visitor-stat-item">
+                    <span class="stat-label">This Week</span>
+                    <span class="stat-value" id="visWeek">0</span>
+                </div>
+                <div class="visitor-stat-item">
+                    <span class="stat-label">This Month</span>
+                    <span class="stat-value" id="visMonth">0</span>
+                </div>
+            </div>
+            <div class="visitor-list">
+                <h4>Recent Visitors</h4>
+                <table class="visitor-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Device</th>
+                            <th>Page</th>
+                        </tr>
+                    </thead>
+                    <tbody id="visitorTableBody">
+                        <tr><td colspan="4" style="text-align:center;color:#8a8a9e;">No visitors yet</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ===== SETTINGS PAGE ===== -->
+        <section class="page" id="page-settings">
+            <h2><i class="fas fa-cog"></i> Settings</h2>
+            <div class="settings-card">
+                <div class="setting-item">
+                    <span class="setting-label">Auto Refresh</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="autoRefresh" checked />
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Refresh Interval</span>
+                    <select id="refreshInterval">
+                        <option value="5">5 seconds</option>
+                        <option value="10" selected>10 seconds</option>
+                        <option value="30">30 seconds</option>
+                        <option value="60">1 minute</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <span class="setting-label">Data Storage</span>
+                    <span class="setting-value">LocalStorage</span>
+                </div>
+                <button class="btn-export" id="exportDataBtn">
+                    <i class="fas fa-file-export"></i> Export Data
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="/admin/script.js" defer></script>
+</body>
+</html>

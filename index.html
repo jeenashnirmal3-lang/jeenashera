@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <title>JEENASHERA · Useful Web Tools & Android Apps</title>
+    <meta name="description" content="JEENASHERA - Premium 3D web tools and Android apps built from scratch. QR Code Generator, Image Resizer, EarREACH & more." />
+    <meta name="keywords" content="3D web tools, QR code generator, image resizer, android apps, 100 websites challenge" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jeenashera.online/" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/logo.svg" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="JEENASHERA · 3D Web Tools & Android Apps" />
+    <meta property="og:description" content="Premium 3D web tools and Android apps built from scratch." />
+    <meta property="og:url" content="https://jeenashera.online/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="JEENASHERA" />
+    
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JEENASHERA · 3D Web Tools" />
+    <meta name="twitter:description" content="Premium 3D web tools and Android apps built from scratch." />
+    
+    <!-- Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "JEENASHERA",
+        "url": "https://jeenashera.online/"
+    }
+    </script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- ===== PREMIUM 3D BACKGROUND ===== -->
+    <div class="bg-layer bg-layer-1"></div>
+    <div class="bg-layer bg-layer-2"></div>
+    <div class="bg-layer bg-layer-3"></div>
+    <div class="bg-layer bg-layer-4"></div>
+    <div class="bg-blob bg-blob-1"></div>
+    <div class="bg-blob bg-blob-2"></div>
+    <div class="bg-blob bg-blob-3"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- ===== MOUSE PARALLAX CURSOR GLOW ===== -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ===== FLOATING 3D PARTICLES ===== -->
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <!-- ===== FLOATING 3D ELEMENTS ===== -->
+    <div class="floating-3d floating-3d-1">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(108,99,255,0.15)" stroke-width="2"/></svg>
+    </div>
+    <div class="floating-3d floating-3d-2">
+        <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="12" fill="none" stroke="rgba(59,130,246,0.12)" stroke-width="2"/></svg>
+    </div>
+    <div class="floating-3d floating-3d-3">
+        <svg viewBox="0 0 100 100"><polygon points="50,10 90,70 10,70" fill="none" stroke="rgba(108,99,255,0.08)" stroke-width="2"/></svg>
+    </div>
+    <div class="floating-3d floating-3d-4">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="rgba(108,99,255,0.04)" stroke="rgba(59,130,246,0.1)" stroke-width="1.5"/></svg>
+    </div>
+    <div class="floating-3d floating-3d-5">
+        <i class="fas fa-qrcode" style="font-size:2rem;color:rgba(108,99,255,0.08);"></i>
+    </div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo" data-jelly>
+                <img src="/logo.svg" alt="JEENASHERA" class="logo-img" />
+                <span class="logo-text">JEENA<span class="highlight">SHERA</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="#tools" class="active" data-jelly>Tools</a>
+                <a href="#challenge" data-jelly>Challenge</a>
+                <a href="https://www.youtube.com/@jeenashmhk" target="_blank" data-jelly>YouTube</a>
+                <a href="#about" data-jelly>About</a>
+                <a href="#" class="nav-signin" data-jelly>Sign In</a>
+            </div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" data-jelly>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" data-jelly>
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#tools">Tools</a>
+            <a href="#challenge">Challenge</a>
+            <a href="https://www.youtube.com/@jeenashmhk" target="_blank">YouTube</a>
+            <a href="#about">About</a>
+            <a href="#" class="mobile-signin">Sign In</a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="hero">
+        <div class="hero-inner">
+            <div class="hero-badge" data-jelly>
+                <span class="badge-dot"></span>
+                <span>100 Websites Challenge</span>
+            </div>
+            <h1 class="hero-title" data-jelly>
+                Useful<br />
+                <span class="gradient-text">Web Tools</span>
+            </h1>
+            <p class="hero-desc" data-jelly>
+                Every tool on this website is built from scratch<br />
+                and released as part of my <strong>100 Websites Challenge</strong>.
+            </p>
+            <div class="hero-stats" data-jelly>
+                <div class="hero-stat">
+                    <span class="stat-number">0.3s</span>
+                    <span class="stat-label">avg speed</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">7+</span>
+                    <span class="stat-label">tools</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">free &amp; open source</span>
+                </div>
+            </div>
+            <div class="hero-actions" data-jelly>
+                <div class="search-wrap" data-jelly>
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search anything..." />
+                    <span class="search-hint">⌘K</span>
+                </div>
+                <button class="btn-primary" id="exploreBtn" data-jelly>
+                    Explore Tools <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TABS ===== -->
+    <div class="tabs-container" id="tabsContainer" data-jelly>
+        <button class="tab-btn active" data-tab="webtools" data-jelly>
+            <i class="fas fa-globe"></i> Web Tools
+            <span class="tab-badge">New</span>
+        </button>
+        <button class="tab-btn" data-tab="androidapps" data-jelly>
+            <i class="fas fa-mobile-alt"></i> Android Apps
+            <span class="tab-badge">New</span>
+        </button>
+        <div class="tab-indicator" id="tabIndicator"></div>
+    </div>
+
+    <!-- ===== WEB TOOLS TAB ===== -->
+    <section class="tab-content active" id="webtools" data-scroll>
+        <div class="tools-grid">
+            <!-- Tool 1: QR Code Generator -->
+            <div class="tool-card" data-name="qr code generator" data-jelly>
+                <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
+                <h3 class="tool-name">QR Code Generator</h3>
+                <p class="tool-desc">Generate beautiful QR codes instantly</p>
+                <span class="tool-tag">New</span>
+                <a href="/tools/qr-code-generator/" class="btn-tool" data-jelly>Open →</a>
+            </div>
+
+            <!-- Tool 2: Image Resizer -->
+            <div class="tool-card" data-name="image resizer" data-jelly>
+                <div class="tool-icon"><i class="fas fa-image"></i></div>
+                <h3 class="tool-name">Image Resizer</h3>
+                <p class="tool-desc">Compress, convert, resize images easily</p>
+                <span class="tool-tag">New</span>
+                <a href="/tools/image-resizer/" class="btn-tool" data-jelly>Open →</a>
+            </div>
+
+            <!-- Tool 3: Password Generator -->
+            <div class="tool-card" data-name="password generator" data-jelly>
+                <div class="tool-icon"><i class="fas fa-key"></i></div>
+                <h3 class="tool-name">Password Generator</h3>
+                <p class="tool-desc">Generate strong and secure passwords</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+
+            <!-- Tool 4: Text Utils -->
+            <div class="tool-card" data-name="text utils" data-jelly>
+                <div class="tool-icon"><i class="fas fa-font"></i></div>
+                <h3 class="tool-name">Text Utils</h3>
+                <p class="tool-desc">Formatting, case conversion and more</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+
+            <!-- Tool 5: Image to PDF -->
+            <div class="tool-card" data-name="image to pdf" data-jelly>
+                <div class="tool-icon"><i class="fas fa-file-pdf"></i></div>
+                <h3 class="tool-name">Image to PDF</h3>
+                <p class="tool-desc">Convert images into PDF instantly</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+
+            <!-- Tool 6: URL Shortener -->
+            <div class="tool-card" data-name="url shortener" data-jelly>
+                <div class="tool-icon"><i class="fas fa-link"></i></div>
+                <h3 class="tool-name">URL Shortener</h3>
+                <p class="tool-desc">Shorten long URLs quickly</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+
+            <!-- Tool 7: Code Minifier -->
+            <div class="tool-card" data-name="code minifier" data-jelly>
+                <div class="tool-icon"><i class="fas fa-code"></i></div>
+                <h3 class="tool-name">Code Minifier</h3>
+                <p class="tool-desc">Minify HTML, CSS, JS and reduce file size</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+
+            <!-- Tool 8: Expense Tracker -->
+            <div class="tool-card" data-name="expense tracker" data-jelly>
+                <div class="tool-icon"><i class="fas fa-wallet"></i></div>
+                <h3 class="tool-name">Expense Tracker</h3>
+                <p class="tool-desc">Track your daily expenses easily</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+        </div>
+        <div class="view-all" data-jelly>
+            <a href="#tools" class="btn-view-all">View All Tools →</a>
+        </div>
+    </section>
+
+    <!-- ===== ANDROID APPS TAB ===== -->
+    <section class="tab-content" id="androidapps" data-scroll>
+        <div class="tools-grid">
+            <!-- App 1: EarREACH -->
+            <div class="tool-card app-card" data-name="earreach" data-jelly>
+                <div class="tool-icon"><i class="fas fa-bluetooth-b"></i></div>
+                <h3 class="tool-name">EarREACH</h3>
+                <p class="tool-desc">Stream audio to Bluetooth earbuds</p>
+                <span class="tool-tag">New</span>
+                <a href="/tools/earreach/" class="btn-tool" data-jelly>Learn More →</a>
+            </div>
+
+            <!-- App 2: AI Chat Bot -->
+            <div class="tool-card app-card" data-name="ai chat bot" data-jelly>
+                <div class="tool-icon"><i class="fas fa-robot"></i></div>
+                <h3 class="tool-name">AI Chat Bot</h3>
+                <p class="tool-desc">Smart AI chatbot powered by algorithms</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+
+            <!-- App 3: Image Editor -->
+            <div class="tool-card app-card" data-name="image editor" data-jelly>
+                <div class="tool-icon"><i class="fas fa-edit"></i></div>
+                <h3 class="tool-name">Image Editor</h3>
+                <p class="tool-desc">Edit, filter, crop and enhance photos</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+
+            <!-- App 4: Music Player -->
+            <div class="tool-card app-card" data-name="music player" data-jelly>
+                <div class="tool-icon"><i class="fas fa-music"></i></div>
+                <h3 class="tool-name">Music Player</h3>
+                <p class="tool-desc">Simple and beautiful offline music player</p>
+                <span class="tool-tag">Soon</span>
+                <button class="btn-tool disabled" disabled>Coming Soon</button>
+            </div>
+        </div>
+        <div class="view-all" data-jelly>
+            <a href="#androidapps" class="btn-view-all">View All Apps →</a>
+        </div>
+    </section>
+
+    <!-- ===== CHALLENGE SECTION ===== -->
+    <section class="challenge-section" id="challenge" data-scroll>
+        <div class="challenge-content">
+            <h2 data-jelly>🚀 100 Websites Challenge</h2>
+            <p data-jelly>
+                I'm building <strong>100 useful websites</strong> publicly while improving 
+                my web development skills. Every completed project becomes a free tool 
+                available on this website.
+            </p>
+            <div class="challenge-stats" data-jelly>
+                <div class="stat">
+                    <span class="stat-number" id="counter">2</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">100</span>
+                    <span class="stat-label">Goal</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">98</span>
+                    <span class="stat-label">Remaining</span>
+                </div>
+            </div>
+            <div class="challenge-buttons" data-jelly>
+                <a href="https://www.youtube.com/@jeenashmhk" target="_blank" class="btn-youtube" data-jelly>
+                    <i class="fab fa-youtube"></i> Watch on YouTube
+                </a>
+                <a href="https://t.me/jeenashG" target="_blank" class="btn-telegram" data-jelly>
+                    <i class="fab fa-telegram-plane"></i> Join Telegram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="about" data-scroll>
+        <div class="footer-top">
+            <div class="footer-brand" data-jelly>
+                <img src="/logo.svg" alt="JEENASHERA" class="logo-img" />
+                <span>JEENASHERA</span>
+                <span class="footer-tag">building in public</span>
+            </div>
+            <div class="footer-links" data-jelly>
+                <a href="#tools">Tools</a>
+                <a href="#challenge">Challenge</a>
+                <a href="https://www.youtube.com/@jeenashmhk" target="_blank">YouTube</a>
+                <a href="#about">About</a>
+            </div>
+            <div class="footer-social" data-jelly>
+                <a href="https://www.youtube.com/@jeenashmhk" target="_blank" class="social-youtube"><i class="fab fa-youtube"></i></a>
+                <a href="https://t.me/jeenashG" target="_blank" class="social-telegram"><i class="fab fa-telegram-plane"></i></a>
+                <a href="#" class="social-github"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-twitter"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 <strong>JEENASHERA</strong>. Built with ❤️ from scratch.</span>
+            <span class="footer-version">v3.0 · 100 Websites Challenge</span>
+        </div>
+    </footer>
+
+    <!-- ===== TOAST ===== -->
+    <div class="toast-container" id="toastContainer" role="alert" aria-live="polite"></div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
