@@ -1,355 +1,1352 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    <title>JEENASHERA · Useful Web Tools & Android Apps</title>
-    <meta name="description" content="JEENASHERA - Premium 3D web tools and Android apps built from scratch. QR Code Generator, Image Resizer, EarREACH & more." />
-    <meta name="keywords" content="3D web tools, QR code generator, image resizer, android apps, 100 websites challenge" />
-    <meta name="robots" content="index, follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JEENASHERA · Premium Digital Ecosystem</title>
+    <meta name="description"
+        content="JEENASHERA - Premium web tools, Android apps, digital products & Telegram bots." />
     <link rel="canonical" href="https://jeenashera.online/" />
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <link rel="apple-touch-icon" href="/logo.svg" />
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="JEENASHERA · 3D Web Tools & Android Apps" />
-    <meta property="og:description" content="Premium 3D web tools and Android apps built from scratch." />
+
+    <meta property="og:title" content="JEENASHERA · Premium Digital Ecosystem" />
+    <meta property="og:description" content="Premium web tools, Android apps & digital products." />
     <meta property="og:url" content="https://jeenashera.online/" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="JEENASHERA" />
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="JEENASHERA · 3D Web Tools" />
-    <meta name="twitter:description" content="Premium 3D web tools and Android apps built from scratch." />
-    
-    <!-- Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "JEENASHERA",
-        "url": "https://jeenashera.online/"
-    }
-    </script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="style.css" />
+
+    <link rel="stylesheet" href="/style.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            background: #000000;
+            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== FIXED BACKGROUND CONTAINER ===== */
+        .fixed-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        /* ===== CONTENT WRAPPER ===== */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+        }
+
+        /* ===== SILVER ORBS ===== */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: #c0c0c0;
+            top: -15%;
+            left: -10%;
+            animation: floatOrb 25s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: #a8a8a8;
+            bottom: -10%;
+            right: -10%;
+            animation: floatOrb 30s ease-in-out infinite reverse;
+        }
+
+        .orb-3 {
+            width: 300px;
+            height: 300px;
+            background: #b8b8b8;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: floatOrb 35s ease-in-out infinite;
+        }
+
+        .orb-4 {
+            width: 250px;
+            height: 250px;
+            background: #d0d0d0;
+            top: 15%;
+            right: 5%;
+            animation: floatOrb 22s ease-in-out infinite 2s;
+        }
+
+        .orb-5 {
+            width: 350px;
+            height: 350px;
+            background: #a0a0a0;
+            bottom: 15%;
+            left: 5%;
+            animation: floatOrb 28s ease-in-out infinite 1s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(40px, -40px) scale(1.1); }
+            66% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        .grid-overlay {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .noise {
+            position: absolute;
+            inset: 0;
+            opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+            pointer-events: none;
+        }
+
+        /* ===== SOLAR SYSTEM WRAPPER ===== */
+        .solar-system-wrapper {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            pointer-events: none;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .solar-system-container {
+            position: relative;
+            width: min(450px, 70vw);
+            height: min(450px, 70vw);
+        }
+
+        /* ===== SUN - SILVER ===== */
+        .sun-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            animation: sunPulse 3s ease-in-out infinite;
+        }
+
+        .sun-core {
+            width: min(70px, 12vw);
+            height: min(70px, 12vw);
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #e8e8e8, #b0b0b0 40%, #808080 80%);
+            box-shadow:
+                0 0 60px rgba(192, 192, 192, 0.4),
+                0 0 120px rgba(192, 192, 192, 0.2),
+                0 0 180px rgba(192, 192, 192, 0.1);
+        }
+
+        .sun-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200%;
+            height: 200%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(192, 192, 192, 0.1), transparent 70%);
+            animation: sunGlow 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.08); }
+        }
+
+        @keyframes sunGlow {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            100% { transform: translate(-50%, -50%) scale(1.5); opacity: 1; }
+        }
+
+        /* ===== SILVER ORBITS ===== */
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transform: translate(-50%, -50%);
+            animation: orbitSpin var(--duration) linear infinite;
+        }
+
+        .orbit::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: var(--planet-size);
+            height: var(--planet-size);
+            border-radius: 50%;
+            background: var(--planet-color);
+            box-shadow: 0 0 20px var(--planet-glow);
+        }
+
+        /* Saturn Ring */
+        .orbit-saturn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(70deg);
+            width: 220%;
+            height: 50%;
+            border-radius: 50%;
+            border: 2px solid rgba(192, 192, 192, 0.15);
+            pointer-events: none;
+        }
+
+        @keyframes orbitSpin {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* ===== SILVER PLANETS ===== */
+        .orbit-1 { width: 90px; height: 90px; --duration: 8s; --planet-size: 8px; --planet-color: #b0b0b0; --planet-glow: rgba(176, 176, 176, 0.3); }
+        .orbit-2 { width: 130px; height: 130px; --duration: 12s; --planet-size: 12px; --planet-color: #c8c8c8; --planet-glow: rgba(200, 200, 200, 0.3); }
+        .orbit-3 { width: 170px; height: 170px; --duration: 16s; --planet-size: 14px; --planet-color: #a0a0a0; --planet-glow: rgba(160, 160, 160, 0.3); }
+        .orbit-4 { width: 210px; height: 210px; --duration: 20s; --planet-size: 11px; --planet-color: #d0d0d0; --planet-glow: rgba(208, 208, 208, 0.3); }
+        .orbit-5 { width: 260px; height: 260px; --duration: 28s; --planet-size: 24px; --planet-color: #b8b8b8; --planet-glow: rgba(184, 184, 184, 0.3); }
+        .orbit-6 { width: 310px; height: 310px; --duration: 36s; --planet-size: 20px; --planet-color: #c0c0c0; --planet-glow: rgba(192, 192, 192, 0.3); }
+        .orbit-7 { width: 350px; height: 350px; --duration: 44s; --planet-size: 16px; --planet-color: #a8a8a8; --planet-glow: rgba(168, 168, 168, 0.3); }
+        .orbit-8 { width: 390px; height: 390px; --duration: 52s; --planet-size: 14px; --planet-color: #989898; --planet-glow: rgba(152, 152, 152, 0.3); }
+
+        /* ===== FLOATING ICONS - SILVER ===== */
+        .float-icon {
+            position: fixed;
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.04);
+            z-index: 0;
+            pointer-events: none;
+            animation: floatIcon 15s ease-in-out infinite;
+        }
+
+        .float-icon-1 { top: 15%; left: 8%; animation-delay: 0s; font-size: 40px; }
+        .float-icon-2 { top: 25%; right: 10%; animation-delay: 2s; font-size: 35px; }
+        .float-icon-3 { bottom: 30%; left: 5%; animation-delay: 4s; font-size: 45px; }
+        .float-icon-4 { bottom: 20%; right: 8%; animation-delay: 1s; font-size: 38px; }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.04; }
+            50% { transform: translateY(-30px) rotate(10deg); opacity: 0.08; }
+        }
+
+        /* ===== PARTICLES - SILVER ===== */
+        .particles {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #c0c0c0;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: particleFloat var(--duration) linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.1; }
+            90% { opacity: 0.1; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+
+        /* ============================================================
+        NAVBAR 
+        ============================================================ */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 1200px;
+            z-index: 100;
+            padding: 0 20px;
+            background: transparent;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 24px;
+            background: rgba(15, 15, 20, 0.4);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 100px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 36px;
+            height: 36px;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-jeenash { color: #e0e0e0; }
+
+        .logo-era {
+            background: linear-gradient(135deg, #e8e8e8, #a0a0a0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: #c0c0c0;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-link {
+            color: #888888;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover { color: #e0e0e0; }
+        .nav-link.active { color: #e0e0e0; }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #c0c0c0, #e8e8e8);
+            border-radius: 2px;
+        }
+
+        .store-link {
+            color: #FFD700;
+            font-weight: 600;
+            padding: 8px 20px;
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.15);
+            border-radius: 50px;
+            transition: 0.3s ease;
+        }
+
+        .store-link:hover {
+            color: #FFD700;
+            background: rgba(255, 215, 0, 0.15);
+            border-color: rgba(255, 215, 0, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.1);
+        }
+
+        .store-link i { color: #FFD700; }
+
+        .mobile-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            padding: 16px 24px;
+            gap: 16px;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        .mobile-menu a {
+            color: #888888;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 8px 0;
+            transition: 0.3s ease;
+        }
+
+        .mobile-menu a:hover { color: #e0e0e0; }
+        .mobile-menu .store-link-mobile { color: #FFD700; font-weight: 600; }
+        .mobile-menu .store-link-mobile:hover { color: #FFD700; }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-btn { display: block; }
+            .mobile-menu.open { display: flex; }
+        }
+
+        /* ============================================================
+        HERO SECTION
+        ============================================================ */
+        .hero {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .hero-wrapper {
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 24px;
+        }
+
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #c0c0c0;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.7); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-line { display: block; }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #e8e8e8, #a0a0a0, #808080);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .typing-text {
+            display: inline-block;
+            min-height: 1.2em;
+            -webkit-text-fill-color: #e0e0e0;
+        }
+
+        .hero-desc {
+            font-size: clamp(1rem, 1.2vw, 1.2rem);
+            color: #777777;
+            max-width: 500px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-group { display: flex; flex-direction: column; }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: 800;
+            color: #e0e0e0;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-divider {
+            width: 1px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding: 100px 20px 60px; gap: 40px; }
+            .hero-wrapper { text-align: center; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-stats { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 2rem; }
+            .stat-number { font-size: 22px; }
+        }
+
+        /* ============================================================
+        CARDS
+        ============================================================ */
+        .cards-section {
+            position: relative;
+            z-index: 1;
+            padding: 80px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .cards-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .cards-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #e0e0e0;
+        }
+
+        .cards-header p {
+            color: #777777;
+            margin-top: 8px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .card-link {
+            text-decoration: none;
+            display: block;
+            transition: 0.4s ease;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 32px 24px;
+            transition: 0.4s ease;
+            backdrop-filter: blur(10px);
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .card-link:hover .card {
+            transform: translateY(-8px);
+            border-color: rgba(192, 192, 192, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .card-icon {
+            font-size: 32px;
+            color: #c0c0c0;
+            margin-bottom: 16px;
+            transition: 0.3s ease;
+        }
+
+        .card-link:hover .card-icon {
+            color: #e8e8e8;
+            transform: scale(1.1);
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e0e0e0;
+            margin-bottom: 8px;
+        }
+
+        .card-desc {
+            color: #777777;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            color: #888888;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .card-link:hover .card-arrow {
+            background: rgba(255, 255, 255, 0.06);
+            color: #e0e0e0;
+            border-color: rgba(192, 192, 192, 0.15);
+        }
+
+        .card-arrow i { transition: 0.3s ease; }
+        .card-link:hover .card-arrow i { transform: translateX(4px); }
+
+        /* ============================================================
+        ABOUT
+        ============================================================ */
+        .about {
+            position: relative;
+            z-index: 1;
+            padding: 80px 24px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-inner {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .about-left { flex: 0 0 180px; }
+
+        .about-avatar {
+            position: relative;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .about-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-ring {
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid rgba(192, 192, 192, 0.2);
+            animation: ringSpin 8s linear infinite;
+        }
+
+        .avatar-ring.ring-2 {
+            inset: -10px;
+            border-color: rgba(192, 192, 192, 0.08);
+            animation-duration: 12s;
+            animation-direction: reverse;
+        }
+
+        @keyframes ringSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .about-right { flex: 1; }
+
+        .about-badge {
+            display: inline-block;
+            padding: 4px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50px;
+            font-size: 13px;
+            color: #888888;
+            margin-bottom: 12px;
+        }
+
+        .about-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #e0e0e0;
+            margin-bottom: 12px;
+        }
+
+        .about-desc {
+            color: #777777;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        .about-stats {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 24px;
+        }
+
+        .about-stat { display: flex; flex-direction: column; }
+
+        .about-stat .stat-number { font-size: 24px; }
+        .about-stat .stat-label { font-size: 12px; color: #666666; }
+
+        .about-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            color: #888888;
+            text-decoration: none;
+            transition: 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: #e0e0e0;
+            transform: translateY(-3px);
+            border-color: rgba(192, 192, 192, 0.15);
+        }
+
+        .social-link.youtube:hover { color: #ff0000; }
+        .social-link.telegram:hover { color: #0088cc; }
+        .social-link.github:hover { color: #e0e0e0; }
+        .social-link.twitter:hover { color: #1da1f2; }
+        .social-link.linkedin:hover { color: #0a66c2; }
+
+        @media (max-width: 768px) {
+            .about-inner { flex-direction: column; text-align: center; }
+            .about-stats { justify-content: center; }
+            .about-social { justify-content: center; }
+        }
+
+        /* ============================================================
+        FOOTER
+        ============================================================ */
+        .footer {
+            position: relative;
+            z-index: 1;
+            padding: 40px 24px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-name { font-size: 18px; font-weight: 800; }
+        .footer-jeenash { color: #e0e0e0; }
+        .footer-era { color: #c0c0c0; }
+
+        .footer-tag {
+            font-size: 12px;
+            color: #666666;
+            display: block;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-links a {
+            color: #888888;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s ease;
+        }
+
+        .footer-links a:hover { color: #e0e0e0; }
+        .footer-links .store-link-footer { color: #FFD700; }
+        .footer-links .store-link-footer:hover { color: #FFD700; text-shadow: 0 0 20px rgba(255, 215, 0, 0.2); }
+
+        .footer-social { display: flex; gap: 12px; }
+        .footer-social a { color: #666666; font-size: 18px; transition: 0.3s ease; }
+        .footer-social a:hover { color: #e0e0e0; }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 20px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 13px;
+            color: #666666;
+        }
+
+        @media (max-width: 768px) {
+            .footer-inner { flex-direction: column; text-align: center; }
+            .footer-bottom { text-align: center; justify-content: center; }
+        }
+
+        /* ============================================================
+        RESPONSIVE - SOLAR SYSTEM
+        ============================================================ */
+        @media (max-width: 768px) {
+            .solar-system-container { width: min(320px, 80vw); height: min(320px, 80vw); }
+            .sun-core { width: min(50px, 10vw); height: min(50px, 10vw); }
+            .orbit-1 { width: 70px; height: 70px; --planet-size: 6px; }
+            .orbit-2 { width: 100px; height: 100px; --planet-size: 9px; }
+            .orbit-3 { width: 130px; height: 130px; --planet-size: 11px; }
+            .orbit-4 { width: 160px; height: 160px; --planet-size: 9px; }
+            .orbit-5 { width: 200px; height: 200px; --planet-size: 18px; }
+            .orbit-6 { width: 240px; height: 240px; --planet-size: 15px; }
+            .orbit-7 { width: 270px; height: 270px; --planet-size: 12px; }
+            .orbit-8 { width: 300px; height: 300px; --planet-size: 11px; }
+            .float-icon { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .solar-system-container { width: min(260px, 85vw); height: min(260px, 85vw); }
+            .sun-core { width: min(40px, 9vw); height: min(40px, 9vw); }
+            .orbit-1 { width: 55px; height: 55px; --planet-size: 5px; }
+            .orbit-2 { width: 80px; height: 80px; --planet-size: 7px; }
+            .orbit-3 { width: 105px; height: 105px; --planet-size: 9px; }
+            .orbit-4 { width: 130px; height: 130px; --planet-size: 7px; }
+            .orbit-5 { width: 165px; height: 165px; --planet-size: 14px; }
+            .orbit-6 { width: 195px; height: 195px; --planet-size: 12px; }
+            .orbit-7 { width: 220px; height: 220px; --planet-size: 10px; }
+            .orbit-8 { width: 245px; height: 245px; --planet-size: 9px; }
+        }
+
+        /* Banner Size Fix */
+        .logo-banner-img {
+            height: 42px !important;
+            width: auto;
+            max-width: 280px;
+            object-fit: contain;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .logo:hover .logo-banner-img {
+            transform: scale(1.02);
+        }
+
+        .footer-banner-img {
+            height: 45px !important;
+            width: auto;
+            max-width: 260px;
+            object-fit: contain;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 480px) {
+            .logo-banner-img { height: 32px !important; max-width: 180px; }
+            .footer-banner-img { height: 35px !important; max-width: 180px; }
+        }
+    </style>
 </head>
+
 <body>
-    <!-- ===== PREMIUM 3D BACKGROUND ===== -->
-    <div class="bg-layer bg-layer-1"></div>
-    <div class="bg-layer bg-layer-2"></div>
-    <div class="bg-layer bg-layer-3"></div>
-    <div class="bg-layer bg-layer-4"></div>
-    <div class="bg-blob bg-blob-1"></div>
-    <div class="bg-blob bg-blob-2"></div>
-    <div class="bg-blob bg-blob-3"></div>
-    <div class="noise-overlay"></div>
 
-    <!-- ===== MOUSE PARALLAX CURSOR GLOW ===== -->
-    <div class="cursor-glow" id="cursorGlow"></div>
-
-    <!-- ===== FLOATING 3D PARTICLES ===== -->
-    <div class="particles-container" id="particlesContainer"></div>
-
-    <!-- ===== FLOATING 3D ELEMENTS ===== -->
-    <div class="floating-3d floating-3d-1">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(108,99,255,0.15)" stroke-width="2"/></svg>
-    </div>
-    <div class="floating-3d floating-3d-2">
-        <svg viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="12" fill="none" stroke="rgba(59,130,246,0.12)" stroke-width="2"/></svg>
-    </div>
-    <div class="floating-3d floating-3d-3">
-        <svg viewBox="0 0 100 100"><polygon points="50,10 90,70 10,70" fill="none" stroke="rgba(108,99,255,0.08)" stroke-width="2"/></svg>
-    </div>
-    <div class="floating-3d floating-3d-4">
-        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="30" fill="rgba(108,99,255,0.04)" stroke="rgba(59,130,246,0.1)" stroke-width="1.5"/></svg>
-    </div>
-    <div class="floating-3d floating-3d-5">
-        <i class="fas fa-qrcode" style="font-size:2rem;color:rgba(108,99,255,0.08);"></i>
+    <!-- ===== FIXED BACKGROUND ===== -->
+    <div class="fixed-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="orb orb-4"></div>
+        <div class="orb orb-5"></div>
+        <div class="grid-overlay"></div>
+        <div class="noise"></div>
+        <div class="particles" id="particles"></div>
     </div>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="/" class="logo" data-jelly>
-                <img src="/logo.svg" alt="JEENASHERA" class="logo-img" />
-                <span class="logo-text">JEENA<span class="highlight">SHERA</span></span>
-            </a>
-            <div class="nav-links">
-                <a href="#tools" class="active" data-jelly>Tools</a>
-                <a href="#challenge" data-jelly>Challenge</a>
-                <a href="https://www.youtube.com/@jeenashmhk" target="_blank" data-jelly>YouTube</a>
-                <a href="#about" data-jelly>About</a>
-                <a href="#" class="nav-signin" data-jelly>Sign In</a>
+    <!-- ===== FIXED SOLAR SYSTEM ===== -->
+    <div class="solar-system-wrapper">
+        <div class="solar-system-container">
+            <div class="sun-container">
+                <div class="sun-core"></div>
+                <div class="sun-glow"></div>
             </div>
-            <div class="nav-actions">
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" data-jelly>
-                    <i class="fas fa-moon"></i>
-                </button>
-                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu" data-jelly>
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            <div class="orbit orbit-4"></div>
+            <div class="orbit orbit-5"></div>
+            <div class="orbit orbit-6 orbit-saturn"></div>
+            <div class="orbit orbit-7"></div>
+            <div class="orbit orbit-8"></div>
         </div>
-        <div class="mobile-menu" id="mobileMenu">
-            <a href="#tools">Tools</a>
-            <a href="#challenge">Challenge</a>
-            <a href="https://www.youtube.com/@jeenashmhk" target="_blank">YouTube</a>
-            <a href="#about">About</a>
-            <a href="#" class="mobile-signin">Sign In</a>
-        </div>
-    </nav>
-
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero" id="hero">
-        <div class="hero-inner">
-            <div class="hero-badge" data-jelly>
-                <span class="badge-dot"></span>
-                <span>100 Websites Challenge</span>
-            </div>
-            <h1 class="hero-title" data-jelly>
-                Useful<br />
-                <span class="gradient-text">Web Tools</span>
-            </h1>
-            <p class="hero-desc" data-jelly>
-                Every tool on this website is built from scratch<br />
-                and released as part of my <strong>100 Websites Challenge</strong>.
-            </p>
-            <div class="hero-stats" data-jelly>
-                <div class="hero-stat">
-                    <span class="stat-number">0.3s</span>
-                    <span class="stat-label">avg speed</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="stat-number">7+</span>
-                    <span class="stat-label">tools</span>
-                </div>
-                <div class="hero-stat">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">free &amp; open source</span>
-                </div>
-            </div>
-            <div class="hero-actions" data-jelly>
-                <div class="search-wrap" data-jelly>
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Search anything..." />
-                    <span class="search-hint">⌘K</span>
-                </div>
-                <button class="btn-primary" id="exploreBtn" data-jelly>
-                    Explore Tools <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== TABS ===== -->
-    <div class="tabs-container" id="tabsContainer" data-jelly>
-        <button class="tab-btn active" data-tab="webtools" data-jelly>
-            <i class="fas fa-globe"></i> Web Tools
-            <span class="tab-badge">New</span>
-        </button>
-        <button class="tab-btn" data-tab="androidapps" data-jelly>
-            <i class="fas fa-mobile-alt"></i> Android Apps
-            <span class="tab-badge">New</span>
-        </button>
-        <div class="tab-indicator" id="tabIndicator"></div>
     </div>
 
-    <!-- ===== WEB TOOLS TAB ===== -->
-    <section class="tab-content active" id="webtools" data-scroll>
-        <div class="tools-grid">
-            <!-- Tool 1: QR Code Generator -->
-            <div class="tool-card" data-name="qr code generator" data-jelly>
-                <div class="tool-icon"><i class="fas fa-qrcode"></i></div>
-                <h3 class="tool-name">QR Code Generator</h3>
-                <p class="tool-desc">Generate beautiful QR codes instantly</p>
-                <span class="tool-tag">New</span>
-                <a href="/tools/qr-code-generator/" class="btn-tool" data-jelly>Open →</a>
-            </div>
+    <!-- ===== FLOATING ICONS ===== -->
+    <div class="float-icon float-icon-1"><i class="fas fa-tools"></i></div>
+    <div class="float-icon float-icon-2"><i class="fas fa-store"></i></div>
+    <div class="float-icon float-icon-3"><i class="fas fa-mobile-alt"></i></div>
+    <div class="float-icon float-icon-4"><i class="fas fa-robot"></i></div>
 
-            <!-- Tool 2: Image Resizer -->
-            <div class="tool-card" data-name="image resizer" data-jelly>
-                <div class="tool-icon"><i class="fas fa-image"></i></div>
-                <h3 class="tool-name">Image Resizer</h3>
-                <p class="tool-desc">Compress, convert, resize images easily</p>
-                <span class="tool-tag">New</span>
-                <a href="/tools/image-resizer/" class="btn-tool" data-jelly>Open →</a>
-            </div>
+    <!-- ============================================================
+    CONTENT WRAPPER
+    ============================================================ -->
+    <div class="content-wrapper">
 
-            <!-- Tool 3: Password Generator -->
-            <div class="tool-card" data-name="password generator" data-jelly>
-                <div class="tool-icon"><i class="fas fa-key"></i></div>
-                <h3 class="tool-name">Password Generator</h3>
-                <p class="tool-desc">Generate strong and secure passwords</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-
-            <!-- Tool 4: Text Utils -->
-            <div class="tool-card" data-name="text utils" data-jelly>
-                <div class="tool-icon"><i class="fas fa-font"></i></div>
-                <h3 class="tool-name">Text Utils</h3>
-                <p class="tool-desc">Formatting, case conversion and more</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-
-            <!-- Tool 5: Image to PDF -->
-            <div class="tool-card" data-name="image to pdf" data-jelly>
-                <div class="tool-icon"><i class="fas fa-file-pdf"></i></div>
-                <h3 class="tool-name">Image to PDF</h3>
-                <p class="tool-desc">Convert images into PDF instantly</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-
-            <!-- Tool 6: URL Shortener -->
-            <div class="tool-card" data-name="url shortener" data-jelly>
-                <div class="tool-icon"><i class="fas fa-link"></i></div>
-                <h3 class="tool-name">URL Shortener</h3>
-                <p class="tool-desc">Shorten long URLs quickly</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-
-            <!-- Tool 7: Code Minifier -->
-            <div class="tool-card" data-name="code minifier" data-jelly>
-                <div class="tool-icon"><i class="fas fa-code"></i></div>
-                <h3 class="tool-name">Code Minifier</h3>
-                <p class="tool-desc">Minify HTML, CSS, JS and reduce file size</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-
-            <!-- Tool 8: Expense Tracker -->
-            <div class="tool-card" data-name="expense tracker" data-jelly>
-                <div class="tool-icon"><i class="fas fa-wallet"></i></div>
-                <h3 class="tool-name">Expense Tracker</h3>
-                <p class="tool-desc">Track your daily expenses easily</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-        </div>
-        <div class="view-all" data-jelly>
-            <a href="#tools" class="btn-view-all">View All Tools →</a>
-        </div>
-    </section>
-
-    <!-- ===== ANDROID APPS TAB ===== -->
-    <section class="tab-content" id="androidapps" data-scroll>
-        <div class="tools-grid">
-            <!-- App 1: EarREACH -->
-            <div class="tool-card app-card" data-name="earreach" data-jelly>
-                <div class="tool-icon"><i class="fas fa-bluetooth-b"></i></div>
-                <h3 class="tool-name">EarREACH</h3>
-                <p class="tool-desc">Stream audio to Bluetooth earbuds</p>
-                <span class="tool-tag">New</span>
-                <a href="/tools/earreach/" class="btn-tool" data-jelly>Learn More →</a>
-            </div>
-
-            <!-- App 2: AI Chat Bot -->
-            <div class="tool-card app-card" data-name="ai chat bot" data-jelly>
-                <div class="tool-icon"><i class="fas fa-robot"></i></div>
-                <h3 class="tool-name">AI Chat Bot</h3>
-                <p class="tool-desc">Smart AI chatbot powered by algorithms</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-
-            <!-- App 3: Image Editor -->
-            <div class="tool-card app-card" data-name="image editor" data-jelly>
-                <div class="tool-icon"><i class="fas fa-edit"></i></div>
-                <h3 class="tool-name">Image Editor</h3>
-                <p class="tool-desc">Edit, filter, crop and enhance photos</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-
-            <!-- App 4: Music Player -->
-            <div class="tool-card app-card" data-name="music player" data-jelly>
-                <div class="tool-icon"><i class="fas fa-music"></i></div>
-                <h3 class="tool-name">Music Player</h3>
-                <p class="tool-desc">Simple and beautiful offline music player</p>
-                <span class="tool-tag">Soon</span>
-                <button class="btn-tool disabled" disabled>Coming Soon</button>
-            </div>
-        </div>
-        <div class="view-all" data-jelly>
-            <a href="#androidapps" class="btn-view-all">View All Apps →</a>
-        </div>
-    </section>
-
-    <!-- ===== CHALLENGE SECTION ===== -->
-    <section class="challenge-section" id="challenge" data-scroll>
-        <div class="challenge-content">
-            <h2 data-jelly>🚀 100 Websites Challenge</h2>
-            <p data-jelly>
-                I'm building <strong>100 useful websites</strong> publicly while improving 
-                my web development skills. Every completed project becomes a free tool 
-                available on this website.
-            </p>
-            <div class="challenge-stats" data-jelly>
-                <div class="stat">
-                    <span class="stat-number" id="counter">2</span>
-                    <span class="stat-label">Completed</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">100</span>
-                    <span class="stat-label">Goal</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">98</span>
-                    <span class="stat-label">Remaining</span>
-                </div>
-            </div>
-            <div class="challenge-buttons" data-jelly>
-                <a href="https://www.youtube.com/@jeenashmhk" target="_blank" class="btn-youtube" data-jelly>
-                    <i class="fab fa-youtube"></i> Watch on YouTube
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-container">
+                <a href="/" class="logo">
+                    <img src="assests/logo.png" alt="JEENASHERA" class="logo-img" />
+                    <img src="assests/banner.png" alt="JEENASHERA Banner" class="logo-banner-img" />
                 </a>
-                <a href="https://t.me/jeenashG" target="_blank" class="btn-telegram" data-jelly>
-                    <i class="fab fa-telegram-plane"></i> Join Telegram
-                </a>
+                <div class="nav-links">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="#cards" class="nav-link">Explore</a>
+                    <!-- Yahan .html add kiya hai -->
+                    <a href="/tools/web.html" class="nav-link">Web Tools</a>
+                    <a href="/tools/bot.html" class="nav-link">Bots</a>
+                    <a href="/tools/apps.html" class="nav-link">Apps</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="/store/" class="nav-link store-link">
+                        <i class="fas fa-store"></i> Store
+                    </a>
+                </div>
+                <div class="nav-actions">
+                    <button class="mobile-btn" id="mobileBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer" id="about" data-scroll>
-        <div class="footer-top">
-            <div class="footer-brand" data-jelly>
-                <img src="/logo.svg" alt="JEENASHERA" class="logo-img" />
-                <span>JEENASHERA</span>
-                <span class="footer-tag">building in public</span>
-            </div>
-            <div class="footer-links" data-jelly>
-                <a href="#tools">Tools</a>
-                <a href="#challenge">Challenge</a>
-                <a href="https://www.youtube.com/@jeenashmhk" target="_blank">YouTube</a>
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="/">Home</a>
+                <a href="#cards">Explore</a>
+                <!-- Yahan .html add kiya hai -->
+                <a href="/tools/bot.html">Bots</a>
+                <a href="/tools/apps.html">Apps</a>
                 <a href="#about">About</a>
+                <a href="/store/" class="store-link-mobile"><i class="fas fa-store"></i> Store</a>
             </div>
-            <div class="footer-social" data-jelly>
-                <a href="https://www.youtube.com/@jeenashmhk" target="_blank" class="social-youtube"><i class="fab fa-youtube"></i></a>
-                <a href="https://t.me/jeenashG" target="_blank" class="social-telegram"><i class="fab fa-telegram-plane"></i></a>
-                <a href="#" class="social-github"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-twitter"><i class="fab fa-x-twitter"></i></a>
+        </nav>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero" id="hero">
+            <div class="hero-wrapper">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    <span>✨ Welcome to the <strong style="color:#e0e0e0;">JEENASH ERA</strong></span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="hero-line">Build, Create &</span>
+                    <span class="hero-line gradient-text typing-text"></span>
+                    <span class="hero-line" style="color:#e0e0e0;">JEENASH ERA</span>
+                </h1>
+
+                <p class="hero-desc">
+                    Premium web tools, Android apps, digital products & Telegram bots —
+                    all crafted from scratch with precision and passion.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-group">
+                        <span class="stat-number">8+</span>
+                        <span class="stat-label">Tools</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-group">
+                        <span class="stat-number">12+</span>
+                        <span class="stat-label">Products</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-group">
+                        <span class="stat-number">4+</span>
+                        <span class="stat-label">Apps</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-group">
+                        <span class="stat-number">3+</span>
+                        <span class="stat-label">Bots</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2026 <strong>JEENASHERA</strong>. Built with ❤️ from scratch.</span>
-            <span class="footer-version">v3.0 · 100 Websites Challenge</span>
-        </div>
-    </footer>
+        </section>
 
-    <!-- ===== TOAST ===== -->
-    <div class="toast-container" id="toastContainer" role="alert" aria-live="polite"></div>
+        <!-- ===== CARDS ===== -->
+        <section class="cards-section" id="cards">
+            <div class="cards-header">
+                <h2>Explore the <span class="gradient-text">JEENASH ERA</span></h2>
+                <p>Tools · Store · Apps · Bots — All in one place</p>
+            </div>
 
-    <script src="script.js" defer></script>
+            <div class="cards-grid">
+                <!-- CARD: WEB TOOLS → /tools/web.html -->
+                <a href="/tools/web.html" style="
+                    display: block;
+                    background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(245,158,11,0.04));
+                    border: 1px solid rgba(255,215,0,0.2);
+                    border-radius: 20px;
+                    padding: 1.75rem;
+                    text-decoration: none;
+                    color: inherit;
+                    transition: transform 0.3s, border-color 0.3s;
+                    position: relative;
+                    " onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(255,215,0,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,215,0,0.2)'">
+
+                    <div style="width:56px; height:56px;
+                        background:linear-gradient(135deg,#FFD700,#F59E0B);
+                        border-radius:14px; display:flex; align-items:center; justify-content:center;
+                        font-size:1.5rem; color:#000; margin-bottom:1rem;
+                        box-shadow:0 8px 24px rgba(255,215,0,0.3);">
+                        <i class="fa-solid fa-toolbox"></i>
+                    </div>
+
+                    <h3 style="margin:0 0 0.35rem; font-size:1.15rem; color:#fff;">Web Tools</h3>
+                    <p style="margin:0; font-size:0.85rem; color:var(--text-muted);">Free online utilities & converters
+                    </p>
+                    <div
+                        style="margin-top:1rem; color:#FFD700; font-size:0.8rem; font-weight:600; display:flex; align-items:center; gap:0.4rem;">
+                        Try Now <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- CARD: DIGITAL STORE → /store -->
+                <a href="/store" style="
+                    display: block;
+                    background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(245,158,11,0.04));
+                    border: 1px solid rgba(255,215,0,0.2);
+                    border-radius: 20px;
+                    padding: 1.75rem;
+                    text-decoration: none;
+                    color: inherit;
+                    transition: transform 0.3s, border-color 0.3s;
+                    position: relative;
+                    " onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(255,215,0,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,215,0,0.2)'">
+
+                    <div style="width:56px; height:56px;
+                        background:linear-gradient(135deg,#FFD700,#F59E0B);
+                        border-radius:14px; display:flex; align-items:center; justify-content:center;
+                        font-size:1.5rem; color:#000; margin-bottom:1rem;
+                        box-shadow:0 8px 24px rgba(255,215,0,0.3);">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+
+                    <h3 style="margin:0 0 0.35rem; font-size:1.15rem; color:#fff;">Digital Store</h3>
+                    <p style="margin:0; font-size:0.85rem; color:var(--text-muted);">Premium reels, ebooks & courses</p>
+                    <div
+                        style="margin-top:1rem; color:#FFD700; font-size:0.8rem; font-weight:600; display:flex; align-items:center; gap:0.4rem;">
+                        Enter Store <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- CARD: ANDROID APP → /store/apps.html -->
+                <a href="/tools/apps.html" class="app-card-link" style="
+                    display: block;
+                    background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(139,92,246,0.08));
+                    border: 1px solid rgba(255,215,0,0.2);
+                    border-radius: 20px;
+                    padding: 1.5rem;
+                    text-decoration: none;
+                    color: inherit;
+                    transition: 0.3s;
+                    position: relative;
+                    overflow: hidden;
+                    " onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(255,215,0,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,215,0,0.2)'">
+
+                    <div style="
+                        width: 56px;
+                        height: 56px;
+                        background: linear-gradient(135deg, #FFD700, #F59E0B);
+                        border-radius: 14px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 1.5rem;
+                        color: #000;
+                        margin-bottom: 1rem;
+                        box-shadow: 0 8px 24px rgba(255,215,0,0.3);
+                    ">
+                        <i class="fa-brands fa-android"></i>
+                    </div>
+
+                    <h3 style="
+                        margin: 0 0 0.25rem;
+                        font-size: 1.1rem;
+                        color: #fff;
+                        font-family: var(--font-heading);
+                    ">Android App</h3>
+
+                    <p style="
+                        margin: 0;
+                        font-size: 0.85rem;
+                        color: var(--text-muted);
+                    ">Tap to preview</p>
+
+                    <div style="
+                        margin-top: 1rem;
+                        color: #FFD700;
+                        font-size: 0.8rem;
+                        font-weight: 600;
+                        display: flex;
+                        align-items: center;
+                        gap: 0.4rem;
+                    ">
+                        View Details <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+
+                <!-- CARD: TELEGRAM BOTS → /bots -->
+                <a href="/tools/bot.html" style="
+                    display: block;
+                    background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(245,158,11,0.04));
+                    border: 1px solid rgba(255,215,0,0.2);
+                    border-radius: 20px;
+                    padding: 1.75rem;
+                    text-decoration: none;
+                    color: inherit;
+                    transition: transform 0.3s, border-color 0.3s;
+                    position: relative;
+                    " onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(255,215,0,0.4)'"
+                    onmouseout="this.style.transform='translateY(0)';this.style.borderColor='rgba(255,215,0,0.2)'">
+
+                    <div style="width:56px; height:56px;
+                        background:linear-gradient(135deg,#FFD700,#F59E0B);
+                        border-radius:14px; display:flex; align-items:center; justify-content:center;
+                        font-size:1.5rem; color:#000; margin-bottom:1rem;
+                        box-shadow:0 8px 24px rgba(255,215,0,0.3);">
+                        <i class="fa-brands fa-telegram"></i>
+                    </div>
+
+                    <h3 style="margin:0 0 0.35rem; font-size:1.15rem; color:#fff;">Telegram Bots</h3>
+                    <p style="margin:0; font-size:0.85rem; color:var(--text-muted);">Automation & utility bots</p>
+                    <div
+                        style="margin-top:1rem; color:#FFD700; font-size:0.8rem; font-weight:600; display:flex; align-items:center; gap:0.4rem;">
+                        Explore Bots <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== ABOUT ===== -->
+        <section class="about" id="about">
+            <div class="about-inner">
+                <div class="about-left">
+                    <div class="about-avatar">
+                        <img src="assests/avtar.jpg" alt="JEENASH" />
+                        <div class="avatar-ring"></div>
+                        <div class="avatar-ring ring-2"></div>
+                    </div>
+                </div>
+                <div class="about-right">
+                    <span class="about-badge">👨‍💻 About Me</span>
+                    <h2 class="about-title">Hi, I'm <span class="gradient-text">JEENASH</span></h2>
+                    <p class="about-desc">
+                        I'm a passionate developer building useful digital products
+                        from scratch. Every tool, app, and bot on this platform is
+                        crafted with precision and love — welcome to the <strong style="color:#e0e0e0;">JEENASH
+                            ERA</strong>.
+                    </p>
+                    <div class="about-stats">
+                        <div class="about-stat">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Projects Built</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="about-stat">
+                            <span class="stat-number">50+</span>
+                            <span class="stat-label">Happy Users</span>
+                        </div>
+                    </div>
+                    <div class="about-social">
+                        <a href="https://www.youtube.com/@jeenashmhk" target="_blank" class="social-link youtube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://t.me/jeenashG" target="_blank" class="social-link telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" class="social-link github"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link twitter"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-link linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="assests/logo.png" alt="JEENASHERA" class="logo-img" />
+                    <div>
+                        <img src="assests/banner.png" alt="JEENASHERA Banner" class="footer-banner-img" />
+                        <span class="footer-tag">building in public</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#cards">Cards</a>
+                    <a href="/store/" class="store-link-footer"><i class="fas fa-store"></i> Store</a>
+                    <a href="#about">About</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.youtube.com/@jeenashmhk" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://t.me/jeenashG" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 <strong style="color:#e0e0e0;">JEENASHERA</strong>. Built with ❤️ from scratch.</span>
+                <span>v3.0 · Premium Ecosystem</span>
+            </div>
+        </footer>
+
+    </div>
+    <!-- ===== END CONTENT WRAPPER ===== -->
+
+    <script>
+        // === MOBILE MENU ===
+        const mobileBtn = document.getElementById('mobileBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+        });
+
+        // === PARTICLES ===
+        const particlesContainer = document.getElementById('particles');
+        if (particlesContainer) {
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = (Math.random() * 3 + 1) + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.setProperty('--duration', (Math.random() * 20 + 10) + 's');
+                particle.style.animationDelay = (Math.random() * 20) + 's';
+                particle.style.opacity = Math.random() * 0.15 + 0.03;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // === TYPING EFFECT ===
+        const typingElement = document.querySelector('.typing-text');
+        const phrases = ['Innovate.', 'Build.', 'Create.'];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                if (charIndex === 0) {
+                    isDeleting = false;
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typeEffect, 1000);
+                    return;
+                }
+                setTimeout(typeEffect, 50);
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                if (charIndex === currentPhrase.length) {
+                    isDeleting = true;
+                    setTimeout(typeEffect, 2000);
+                    return;
+                }
+                setTimeout(typeEffect, 100);
+            }
+        }
+
+        typeEffect();
+    </script>
 </body>
+
 </html>
