@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Library | Jeenash Store - Digital Asset Dashboard</title>
+    <meta name="description" content="Access your purchased digital products, courses, and reels bundles instantly from your Jeenash Store dashboard. Secure and easy to use.">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="My Library | Jeenash Store - Digital Asset Dashboard">
+    <meta property="og:description" content="Access all your purchased digital products, courses, and reels bundles instantly from your secure dashboard.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jeenashera.online/store/dashboard.html">
+    <meta property="og:image" content="https://jeenashera.online/store/assets/banners/og-banner.jpg">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/store/assets/favicon.ico">
+    
+    <!-- Stylesheets — ABSOLUTE PATHS -->
+    <link rel="stylesheet" href="/store/css/style.css">
+    <link rel="stylesheet" href="/store/css/dashboard.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H0SWB77LDL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H0SWB77LDL');
+    </script>
+</head>
+
+<body class="dashboard-layout">
+    <div class="bg-shape shape-1" style="opacity: 0.1;" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="glass-nav" role="banner">
+        <div class="container nav-container">
+            <a href="/store/index.html" class="brand-logo" aria-label="Jeenash Store Home">
+                <span class="logo-icon"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="logo-text">JEENASH<span class="text-primary">STORE</span></span>
+            </a>
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="main-nav">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+            <nav id="main-nav" class="main-navigation" role="navigation">
+                <ul class="nav-links">
+                    <li><a href="/store/index.html" class="nav-link">Home</a></li>
+                    <li><a href="/store/explore.html" class="nav-link">Explore</a></li>
+                    <li><a href="/store/dashboard.html" class="nav-link active">Library</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div id="auth-state-container" class="auth-state"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Premium Welcome Header -->
+    <section class="dashboard-header" aria-labelledby="dashboard-greeting">
+        <div class="container">
+            <div class="premium-welcome-card">
+                <div class="welcome-text">
+                    <h1 id="dashboard-greeting">Welcome, <span id="user-greeting" class="gold-gradient-text">Creator</span> 👋</h1>
+                    <p>Your premium digital assets and courses are ready.</p>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-icon"><i class="fa-solid fa-gem" aria-hidden="true"></i></div>
+                    <div class="stat-info">
+                        <span id="total-purchases" class="stat-num">0</span>
+                        <span class="stat-label">Products Owned</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- My Library Section -->
+    <main class="dashboard-content" role="main">
+        <div class="container">
+            <div class="section-title-wrap">
+                <h2 class="section-title">My Library</h2>
+            </div>
+
+            <!-- Skeleton Loader -->
+            <div id="dashboard-loader" class="orders-grid" aria-label="Loading your library">
+                <div class="dash-card skeleton">
+                    <div class="skel-img"></div>
+                    <div class="skel-body">
+                        <div class="skel-line"></div>
+                        <div class="skel-btn"></div>
+                    </div>
+                </div>
+                <div class="dash-card skeleton">
+                    <div class="skel-img"></div>
+                    <div class="skel-body">
+                        <div class="skel-line"></div>
+                        <div class="skel-btn"></div>
+                    </div>
+                </div>
+                <div class="dash-card skeleton">
+                    <div class="skel-img"></div>
+                    <div class="skel-body">
+                        <div class="skel-line"></div>
+                        <div class="skel-btn"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Orders Grid -->
+            <div id="orders-grid" class="orders-grid hidden"></div>
+
+            <!-- Empty State -->
+            <div id="no-orders-state" class="empty-state hidden" role="status">
+                <div class="empty-icon"><i class="fa-solid fa-box-open" aria-hidden="true"></i></div>
+                <h3>Your library is empty</h3>
+                <p>Looks like you haven't bought anything yet.</p>
+                <a href="/store/explore.html" class="btn btn-primary" style="margin-top: 1rem; border-radius: 50px;">
+                    <i class="fa-solid fa-compass" aria-hidden="true"></i> Explore Products
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" style="padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05);" role="contentinfo">
+        <div class="container" style="text-align: center;">
+            <p>&copy; <span id="current-year"></span> Jeenash Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase & Scripts — ABSOLUTE PATHS -->
+    <script type="module" src="/store/config/firebase.js"></script>
+    <script type="module" src="/store/js/app.js"></script>
+    <script type="module" src="/store/js/auth.js"></script>
+    <script type="module" src="/store/js/dashboard.js"></script>
+</body>
+</html>
