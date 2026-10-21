@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Explore Premium Digital Products | Jeenash Store - Reels, Ebooks & Courses</title>
+    
+    <!-- SEO & Meta Tags -->
+    <meta name="description" content="Explore the best collection of premium digital products at Jeenash Store. Find viral Reels Bundles, Ebooks, Courses, and Free Resources for Indian creators.">
+    <meta name="keywords" content="Explore digital products, Reels Bundles India, Ebooks for creators, Online Courses India, Jeenash Store">
+    <meta name="robots" content="index, follow">
+    
+    <!-- OpenGraph Tags -->
+    <meta property="og:title" content="Explore Premium Digital Products | Jeenash Store">
+    <meta property="og:description" content="Discover high-quality Reels Bundles, Ebooks, and Courses at Jeenash Store. Instant access, secure payment, and ₹ pricing for Indian creators.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jeenashera.online/store/explore.html">
+    <meta property="og:image" content="https://jeenashera.online/store/assets/banners/og-banner.jpg">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="/store/assets/favicon.ico">
+    
+    <!-- Stylesheets — ABSOLUTE PATHS -->
+    <link rel="stylesheet" href="/store/css/style.css">
+    <link rel="stylesheet" href="/store/css/explore.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H0SWB77LDL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H0SWB77LDL');
+    </script>
+    
+    <!-- Cart & Wishlist Styles -->
+    <style>
+        .cart-badge {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 20px;
+            height: 20px;
+            background: var(--accent-red, #ef4444);
+            color: #fff;
+            font-size: 0.55rem;
+            font-weight: 700;
+            border-radius: 50%;
+            padding: 0 5px;
+            margin-left: 2px;
+            vertical-align: top;
+            top: -8px;
+        }
+        .cart-indicator {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            position: relative;
+            display: none;
+            transition: var(--transition-fast);
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .cart-indicator:hover {
+            color: var(--gold);
+        }
+        .cart-indicator .cart-badge {
+            display: none;
+        }
+        
+        .card-wishlist-btn {
+            position: absolute;
+            top: 0.6rem;
+            right: 0.6rem;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            z-index: 3;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        .card-wishlist-btn:hover {
+            transform: scale(1.1);
+            background: rgba(0,0,0,0.7);
+        }
+        .card-wishlist-btn.active {
+            color: #ef4444;
+        }
+        .card-wishlist-btn.active i {
+            color: #ef4444;
+        }
+        
+        .card-cart-btn {
+            padding: 0.4rem 0.5rem;
+            font-size: 0.6rem;
+            border-radius: var(--radius-sm);
+            min-height: 32px;
+            border: 1px solid var(--border-glass);
+            background: rgba(255,255,255,0.04);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            width: 100%;
+        }
+        .card-cart-btn:hover:not(:disabled) {
+            background: rgba(255,255,255,0.08);
+            color: var(--text-main);
+        }
+        .card-cart-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .card-cart-btn.added {
+            background: rgba(16,185,129,0.15);
+            color: #34d399;
+            border-color: rgba(16,185,129,0.3);
+        }
+        
+        .product-card {
+            position: relative;
+        }
+        
+        .product-footer .btn-group {
+            display: flex;
+            gap: 0.4rem;
+            width: 100%;
+        }
+        .product-footer .btn-group .btn {
+            flex: 1;
+        }
+        .product-footer .btn-group .card-cart-btn {
+            flex: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .product-footer .btn-group {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            .product-footer .btn-group .btn,
+            .product-footer .btn-group .card-cart-btn {
+                flex: none;
+                width: 100%;
+            }
+            .card-wishlist-btn {
+                width: 28px;
+                height: 28px;
+                font-size: 0.7rem;
+                top: 0.4rem;
+                right: 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body class="explore-page">
+    <!-- Background 3D Elements -->
+    <div class="bg-shape shape-1" style="opacity: 0.2;" aria-hidden="true"></div>
+    <div class="bg-shape shape-2" style="opacity: 0.1;" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="glass-nav" role="banner">
+        <div class="container nav-container">
+            <a href="/store/index.html" class="brand-logo" aria-label="Jeenash Store Home">
+                <span class="logo-icon"><i class="fa-solid fa-layer-group"></i></span>
+                <span class="logo-text">JEENASH<span class="text-primary">STORE</span></span>
+            </a>
+
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <a href="/store/cart.html" class="cart-indicator" id="cart-indicator" aria-label="View cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-badge" id="cart-count-badge">0</span>
+                </a>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu" aria-expanded="false" aria-controls="main-nav">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+
+            <nav id="main-nav" class="main-navigation" role="navigation">
+                <ul class="nav-links">
+                    <li><a href="/store/index.html#store" class="nav-link">Home</a></li>
+                    <li><a href="/store/explore.html" class="nav-link active">Explore</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <div id="auth-state-container" class="auth-state">
+                        <div class="skeleton-loader skeleton-btn" aria-hidden="true"></div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Explore Header & Search Area -->
+    <section class="explore-header" aria-labelledby="explore-title">
+        <div class="container explore-container">
+            <h1 id="explore-title" class="explore-title">Find Your Next <span class="gold-gradient-text">Digital Asset</span></h1>
+            <p class="explore-subtitle">Search through our collection of premium courses, ebooks, and reels bundles.</p>
+            
+            <!-- Modern Search Box -->
+            <div class="search-container glass-effect" role="search">
+                <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+                <input 
+                    type="text" 
+                    id="explore-search" 
+                    placeholder="Search for courses, bundles, ebooks..." 
+                    autocomplete="off"
+                    aria-label="Search for digital products"
+                >
+                <button id="search-clear-btn" class="clear-btn hidden" aria-label="Clear search">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modern Filter Pills -->
+            <nav class="explore-filters" id="explore-filters" aria-label="Filter products by category">
+                <button class="pill-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+                <button class="pill-btn" data-filter="trending" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-fire text-orange" aria-hidden="true"></i> Trending
+                </button>
+                <button class="pill-btn" data-filter="premium" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-crown text-purple" aria-hidden="true"></i> Premium
+                </button>
+                <button class="pill-btn" data-filter="free" role="tab" aria-selected="false">
+                    <i class="fa-solid fa-gift text-green" aria-hidden="true"></i> Free
+                </button>
+                <div class="divider" aria-hidden="true"></div>
+                <button class="pill-btn" data-filter="courses" role="tab" aria-selected="false">Courses</button>
+                <button class="pill-btn" data-filter="ebooks" role="tab" aria-selected="false">Ebooks</button>
+                <button class="pill-btn" data-filter="reels" role="tab" aria-selected="false">Reels Bundles</button>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <main class="explore-results" role="main">
+        <div class="container">
+            <div class="results-header">
+                <h3 id="results-count" aria-live="polite">Loading products...</h3>
+            </div>
+
+            <!-- Loader -->
+            <div id="explore-loader" class="products-grid" aria-label="Loading products">
+                <div class="product-card skeleton-card">
+                    <div class="skeleton-img"></div>
+                    <div class="skeleton-content">
+                        <div class="skeleton-line title"></div>
+                        <div class="skeleton-line desc"></div>
+                    </div>
+                </div>
+                <div class="product-card skeleton-card">
+                    <div class="skeleton-img"></div>
+                    <div class="skeleton-content">
+                        <div class="skeleton-line title"></div>
+                        <div class="skeleton-line desc"></div>
+                    </div>
+                </div>
+                <div class="product-card skeleton-card">
+                    <div class="skeleton-img"></div>
+                    <div class="skeleton-content">
+                        <div class="skeleton-line title"></div>
+                        <div class="skeleton-line desc"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Products Grid -->
+            <div id="explore-grid" class="products-grid hidden explore-grid-layout">
+                <!-- Injected via JS -->
+            </div>
+            
+            <!-- Empty State -->
+            <div id="explore-empty" class="empty-state hidden" role="status">
+                <div class="empty-icon-wrapper">
+                    <i class="fa-solid fa-magnifying-glass-minus" aria-hidden="true"></i>
+                </div>
+                <h3>No results found</h3>
+                <p>Try adjusting your search or filters to find what you're looking for.</p>
+                <button class="btn btn-secondary" id="reset-filters-btn" style="margin-top: 1rem;">
+                    <i class="fa-solid fa-rotate-left" aria-hidden="true"></i> Reset Filters
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container" style="text-align: center;">
+            <p>&copy; <span id="current-year"></span> Jeenash Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase & Scripts — ABSOLUTE PATHS -->
+    <script type="module" src="/store/config/firebase.js"></script>
+    <script type="module" src="/store/js/app.js"></script>
+    <script type="module" src="/store/js/auth.js"></script>
+    <script type="module" src="/store/js/explore.js"></script>
+    
+    <!-- Cart & Wishlist Logic -->
+    <script type="module">
+        import { showToast } from '/store/js/app.js';
+        
+        const CART_KEY = 'jeenash_cart';
+        const WISHLIST_KEY = 'jeenash_wishlist';
+        
+        function getCart() {
+            try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; }
+            catch { return []; }
+        }
+        
+        function saveCart(cart) {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            updateCartIndicator();
+        }
+        
+        function addToCart(product) {
+            if (!product || !product.id) return false;
+            const cart = getCart();
+            const existing = cart.find(item => item.id === product.id);
+            if (existing) {
+                showToast('Already in cart!', 'info');
+                return false;
+            }
+            cart.push({
+                id: product.id,
+                title: product.title || 'Untitled',
+                price: product.price || 0,
+                image: product.imageUrl || '/store/assets/images/placeholder.jpg',
+                category: product.category || 'Product',
+                quantity: 1
+            });
+            saveCart(cart);
+            showToast('Added to cart! 🛒', 'success');
+            return true;
+        }
+        
+        function getCartCount() { return getCart().length; }
+        
+        function updateCartIndicator() {
+            const indicator = document.getElementById('cart-indicator');
+            const badge = document.getElementById('cart-count-badge');
+            if (!indicator || !badge) return;
+            const count = getCartCount();
+            if (count > 0) {
+                indicator.style.display = 'inline-flex';
+                badge.style.display = 'inline-flex';
+                badge.textContent = count;
+            } else {
+                indicator.style.display = 'none';
+                badge.style.display = 'none';
+            }
+        }
+        
+        function getWishlist() {
+            try { return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || []; }
+            catch { return []; }
+        }
+        
+        function saveWishlist(wishlist) {
+            localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+        }
+        
+        function toggleWishlist(productId) {
+            if (!productId) return false;
+            const wishlist = getWishlist();
+            const index = wishlist.indexOf(productId);
+            if (index > -1) {
+                wishlist.splice(index, 1);
+                saveWishlist(wishlist);
+                showToast('Removed from wishlist', 'info');
+                return false;
+            } else {
+                wishlist.push(productId);
+                saveWishlist(wishlist);
+                showToast('Added to wishlist ❤️', 'success');
+                return true;
+            }
+        }
+        
+        function isInWishlist(productId) {
+            if (!productId) return false;
+            return getWishlist().indexOf(productId) > -1;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCartIndicator();
+        });
+
+        window.__cart = {
+            addToCart, getCart, getCartCount, updateCartIndicator,
+            isInWishlist, toggleWishlist, getWishlist
+        };
+        
+        console.log('✅ Cart & Wishlist loaded on explore page');
+    </script>
+</body>
+</html>

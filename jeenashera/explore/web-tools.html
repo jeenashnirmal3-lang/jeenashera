@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Tools · JEENASHERA</title>
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <style>
+        /* ============================================================
+           ROOT VARIABLES
+           ============================================================ */
+        :root {
+            --bg: #07070e;
+            --bg-card: rgba(255, 255, 255, 0.035);
+            --bg-card-hover: rgba(255, 255, 255, 0.07);
+            --border: rgba(255, 255, 255, 0.06);
+            --border-hover: rgba(255, 255, 255, 0.12);
+            --text: #ffffff;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --jeenash: #7c3aed;
+            --jeenash-light: rgba(124, 58, 237, 0.15);
+            --era: #f59e0b;
+            --gradient-main: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 40%, #f59e0b 100%);
+            --shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 20px 70px rgba(0, 0, 0, 0.7);
+            --shadow-glow: 0 0 80px rgba(124, 58, 237, 0.06), 0 0 80px rgba(245, 158, 11, 0.03);
+            --radius: 16px;
+            --radius-full: 100px;
+            --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            --spring: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, sans-serif;
+            min-height: 100vh;
+            padding: 100px 20px 40px;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ============================================================
+           3D ORBS
+           ============================================================ */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(160px);
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 40s ease-in-out infinite alternate;
+        }
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--jeenash);
+            top: -300px;
+            right: -200px;
+            opacity: 0.06;
+            animation-delay: 0s;
+        }
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--era);
+            bottom: -250px;
+            left: -200px;
+            opacity: 0.05;
+            animation-delay: -12s;
+        }
+        @keyframes orbFloat {
+            0% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(80px,-60px) scale(1.15); }
+            66% { transform: translate(-60px,70px) scale(0.85); }
+            100% { transform: translate(50px,-40px) scale(1.08); }
+        }
+
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.005) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.005) 1px, transparent 1px);
+            background-size: 60px 60px;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.01;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            background-size: 256px 256px;
+        }
+
+        /* ============================================================
+           NAVBAR
+           ============================================================ */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            padding: 0 20px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 20px;
+            background: rgba(7, 7, 14, 0.7);
+            backdrop-filter: blur(50px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 100px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
+        }
+        .logo-text {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+        .logo-jeenash {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .logo-era {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 6px 16px;
+            border-radius: 100px;
+            transition: var(--transition);
+        }
+        .nav-link:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-link.active {
+            color: #fff;
+            background: var(--gradient-main);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25);
+        }
+        .nav-link.signin {
+            background: var(--gradient-main);
+            color: #fff;
+            padding: 6px 18px;
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.25);
+        }
+        .nav-link.signin:hover {
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.35);
+            transform: scale(1.04);
+        }
+
+        /* ============================================================
+           PAGE HEADER
+           ============================================================ */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        .page-header h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            letter-spacing: -1.5px;
+        }
+        .page-header h1 .gradient-text {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .page-header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+           TOOLS GRID — 2 CARDS
+           ============================================================ */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================================
+           CARD
+           ============================================================ */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px 20px;
+            transition: var(--spring);
+            text-align: center;
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .card:hover::before {
+            opacity: 1;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: var(--shadow-hover), var(--shadow-glow);
+            background: var(--bg-card-hover);
+        }
+        .card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.025), transparent 60%);
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        .card .card-icon {
+            font-size: 2.2rem;
+            color: var(--jeenash);
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        .card .card-icon i {
+            background: var(--jeenash-light);
+            padding: 14px;
+            border-radius: 14px;
+            font-size: 1.3rem;
+            transition: var(--spring);
+            display: inline-block;
+        }
+        .card:hover .card-icon i {
+            transform: scale(1.08) rotate(-4deg);
+            background: rgba(124, 58, 237, 0.2);
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.1);
+        }
+
+        .card .badge {
+            display: inline-block;
+            font-size: 0.55rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+        }
+        .card .badge.free {
+            background: rgba(0, 200, 83, 0.15);
+            color: #00c853;
+        }
+        .card .badge.new {
+            background: rgba(124, 58, 237, 0.2);
+            color: var(--jeenash);
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
+        }
+        .card p {
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            line-height: 1.5;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card .btn-card {
+            padding: 8px 20px;
+            background: var(--gradient-main);
+            border: none;
+            border-radius: var(--radius-full);
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--spring);
+            box-shadow: 0 4px 20px rgba(124, 58, 237, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+        .card .btn-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3);
+        }
+        .card .btn-card i {
+            font-size: 0.65rem;
+            transition: transform 0.3s ease;
+        }
+        .card .btn-card:hover i {
+            transform: translateX(3px);
+        }
+
+        /* ===== NEW PROMPT CARD SPECIAL ===== */
+        .card.prompt-card {
+            border-color: rgba(124, 58, 237, 0.2);
+        }
+        .card.prompt-card .btn-card {
+            background: linear-gradient(135deg, #7c3aed, #f59e0b);
+        }
+
+        /* ===== BACK LINK ===== */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 40px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid transparent;
+            position: relative;
+            z-index: 1;
+        }
+        .back-link:hover {
+            color: var(--text);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--border);
+            transform: translateX(-4px);
+        }
+        .back-link i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+        .back-link:hover i {
+            transform: translateX(-4px);
+        }
+
+        .footer-text {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================================
+           RESPONSIVE — Mobile pe 2 cards hi rahenge
+           ============================================================ */
+        @media (max-width: 768px) {
+            body {
+                padding: 80px 16px 30px;
+            }
+            .navbar {
+                padding: 0 12px;
+                top: 12px;
+            }
+            .nav-container {
+                padding: 6px 14px;
+                border-radius: 60px;
+            }
+            .logo-text {
+                font-size: 0.9rem;
+            }
+            .nav-link {
+                font-size: 0.75rem;
+                padding: 4px 12px;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+                max-width: 100%;
+            }
+            .card {
+                padding: 18px 14px;
+            }
+            .card .card-icon {
+                font-size: 1.8rem;
+            }
+            .card .card-icon i {
+                padding: 10px;
+                font-size: 1rem;
+            }
+            .card h3 {
+                font-size: 0.85rem;
+            }
+            .card p {
+                font-size: 0.7rem;
+            }
+            .card .btn-card {
+                padding: 6px 14px;
+                font-size: 0.65rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 70px 12px 20px;
+            }
+            .nav-container {
+                padding: 4px 10px;
+                border-radius: 40px;
+            }
+            .logo-text {
+                font-size: 0.75rem;
+            }
+            .nav-link {
+                font-size: 0.65rem;
+                padding: 3px 8px;
+            }
+            .nav-link.signin {
+                padding: 4px 10px;
+                font-size: 0.65rem;
+            }
+            .page-header h1 {
+                font-size: 1.6rem;
+            }
+            .page-header p {
+                font-size: 0.8rem;
+            }
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .card {
+                padding: 14px 10px;
+            }
+            .card .card-icon {
+                font-size: 1.4rem;
+            }
+            .card .card-icon i {
+                padding: 8px;
+                font-size: 0.8rem;
+            }
+            .card h3 {
+                font-size: 0.75rem;
+            }
+            .card p {
+                font-size: 0.6rem;
+                margin-bottom: 10px;
+            }
+            .card .btn-card {
+                padding: 4px 10px;
+                font-size: 0.55rem;
+            }
+            .back-link {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== 3D ORBS ===== -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="grid-overlay"></div>
+    <div class="noise"></div>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" style="text-decoration:none;">
+                <div class="logo-text">
+                    <span class="logo-jeenash">JEENASH</span><span class="logo-era">ERA</span>
+                </div>
+            </a>
+            <div class="nav-links">
+                <a href="/web-tools.html" class="nav-link active">Tools</a>
+                <a href="/#about" class="nav-link">About</a>
+                <a href="#" class="nav-link signin">Sign In</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== PAGE HEADER ===== -->
+    <div class="page-header">
+        <h1>Web <span class="gradient-text">Tools</span></h1>
+        <p>Explore tools built from scratch</p>
+    </div>
+
+    <!-- ===== TOOLS GRID — SIRF 2 CARDS ===== -->
+    <div class="tools-grid">
+
+        <!-- CARD 1: QR Code Generator -->
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-qrcode"></i></div>
+            <span class="badge free">Free</span>
+            <h3>QR Code Generator</h3>
+            <p>Generate beautiful QR codes instantly.</p>
+            <a href="/tools/qr-code-generator/" class="btn-card">
+                Open <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+        <!-- CARD 2: New Prompt -->
+        <div class="card prompt-card">
+            <div class="card-icon"><i class="fas fa-pen-fancy"></i></div>
+            <span class="badge new">New</span>
+            <h3>JAILBREAK PROMT</h3>
+            <p>WORK ON DEEPSEAEK AI</p>
+            <a href="/tools/ai-promt.html" class="btn-card">
+                Explore <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- ===== BACK TO HOME ===== -->
+    <div style="text-align:center;">
+        <a href="/" class="back-link">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <div class="footer-text">
+        © 2026 <strong>JEENASHERA</strong>. Built with ❤️ from scratch.
+    </div>
+
+</body>
+</html>
