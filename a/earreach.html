@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    
+    <!-- ===== SEO META TAGS ===== -->
+    <title>EarReach · Smart Bluetooth Audio Utility App</title>
+    <meta name="description" content="EarReach is a smart Bluetooth audio utility app that lets you stream live audio between your phone and compatible Bluetooth earbuds while also supporting audio recording. Low latency, professional interface." />
+    <meta name="keywords" content="EarReach, Bluetooth audio, stream audio, earbuds, audio recording, low latency, Bluetooth utility, Android app, Jeenash Era" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jeenashera.online/a/earreach.html" />
+    
+    <!-- ===== FAVICON & LOGO ===== -->
+    <link rel="icon" type="image/png" href="../assests/a/earreach.png" />
+    
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:title" content="EarReach · Smart Bluetooth Audio Utility App" />
+    <meta property="og:description" content="Stream live audio between your phone and Bluetooth earbuds. Record audio, low latency, professional interface." />
+    <meta property="og:url" content="https://jeenashera.online/a/earreach.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Jeenash Era" />
+    <meta property="og:image" content="https://jeenashera.online/assests/a/earreach.png" />
+    
+    <!-- ===== SCHEMA.ORG ===== -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "EarReach",
+        "description": "Smart Bluetooth audio utility app. Stream live audio between phone and Bluetooth earbuds with recording support.",
+        "applicationCategory": "Multimedia",
+        "operatingSystem": "Android",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Jeenash"
+        }
+    }
+    </script>
+    
+    <!-- ===== FONTS & ICONS ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <!-- ===== INLINE CSS ===== -->
+    <style>
+        :root {
+            --bg: #f0f2f5;
+            --bg-card: rgba(255, 255, 255, 0.7);
+            --bg-card-hover: rgba(255, 255, 255, 0.9);
+            --bg-glass: rgba(255, 255, 255, 0.5);
+            --border: rgba(0, 0, 0, 0.06);
+            --border-hover: rgba(0, 0, 0, 0.12);
+            --text: #1a1a2e;
+            --text-secondary: #4a4a5e;
+            --text-muted: #8a8a9e;
+            --accent: #6C63FF;
+            --accent-hover: #5849E8;
+            --gradient: linear-gradient(135deg, #6C63FF, #3B82F6);
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 12px 48px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-full: 50px;
+            --transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* Background Blurs */
+        .blur-bg { position: fixed; border-radius: 50%; filter: blur(120px); pointer-events: none; z-index: 0; opacity: 0.25; animation: blurFloat 30s ease-in-out infinite alternate; }
+        .blur-1 { width: 450px; height: 450px; background: #6C63FF; top: -150px; right: -100px; opacity: 0.15; }
+        .blur-2 { width: 350px; height: 350px; background: #3B82F6; bottom: -100px; left: -50px; opacity: 0.12; animation-delay: -10s; }
+        .blur-3 { width: 250px; height: 250px; background: #FF4D8D; top: 50%; left: 70%; opacity: 0.08; animation-delay: -20s; }
+        @keyframes blurFloat { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px,-30px) scale(1.1); } 100% { transform: translate(-30px,40px) scale(0.9); } }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 16px 20px 60px; position: relative; z-index: 1; }
+
+        /* Navbar */
+        .navbar {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 20px; background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(20px); border: 1px solid var(--border);
+            border-radius: var(--radius-full); margin-bottom: 40px;
+            position: sticky; top: 12px; z-index: 100;
+            box-shadow: var(--shadow); transition: var(--transition);
+        }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { width: 36px; height: 36px; border-radius: 10px; object-fit: contain; }
+        .logo-text { font-size: 1.3rem; font-weight: 800; color: var(--text); letter-spacing: -0.5px; }
+        .logo-text .highlight { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent); }
+
+        /* Hero */
+        .hero { padding: 20px 0 30px; text-align: center; max-width: 780px; margin: 0 auto; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--bg-glass); border: 1px solid var(--border);
+            padding: 5px 16px 5px 12px; border-radius: var(--radius-full);
+            font-size: 0.7rem; color: var(--accent); font-weight: 600; margin-bottom: 18px;
+        }
+        .badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse-dot 2s infinite; }
+        @keyframes pulse-dot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.3; transform: scale(0.6); } }
+
+        .hero-title { font-size: clamp(2.6rem, 7vw, 4.2rem); font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+        .hero-title .gradient-text { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-desc { color: var(--text-secondary); font-size: clamp(1rem, 1.2vw, 1.15rem); max-width: 520px; margin: 0 auto 28px; line-height: 1.7; }
+
+        /* Content Grid */
+        .content-section { padding: 20px 0 40px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+        
+        .screenshot-box { position: relative; }
+        .screenshot-wrapper {
+            border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow);
+            transition: var(--transition); background: var(--bg-card); border: 1px solid var(--border);
+        }
+        .screenshot-wrapper:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .screenshot-wrapper img { width: 100%; height: auto; display: block; }
+        
+        .info-box h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 12px; }
+        .info-box p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8; margin-bottom: 16px; }
+
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 16px 0 20px; }
+        .feature-item {
+            display: flex; align-items: center; gap: 10px; padding: 10px 14px;
+            background: var(--bg-glass); border: 1px solid var(--border); border-radius: var(--radius-sm);
+            font-size: 0.85rem; font-weight: 500; color: var(--text);
+        }
+        .feature-item i { color: var(--accent); font-size: 1rem; }
+
+        /* Download Section */
+        .download-section {
+            background: var(--bg-glass); border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 24px; margin-top: 20px; text-align: center;
+            position: relative; overflow: hidden;
+        }
+        .download-info { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 16px; }
+        .download-info i { color: var(--accent); margin-right: 6px; }
+
+        .btn-download {
+            display: inline-flex; flex-direction: column; align-items: center; gap: 4px;
+            padding: 16px 48px; background: var(--gradient); border: none;
+            border-radius: var(--radius-full); color: white; font-size: 1.1rem; font-weight: 700;
+            cursor: pointer; transition: var(--transition); text-decoration: none;
+            box-shadow: 0 4px 24px rgba(108, 99, 255, 0.3);
+        }
+        .btn-download:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(108, 99, 255, 0.45); }
+        .btn-download:active { transform: scale(0.96); }
+        .btn-download i { font-size: 1.2rem; }
+        .btn-download .btn-sub { font-size: 0.7rem; font-weight: 400; opacity: 0.8; }
+        .security-note { margin-top: 14px; color: var(--text-secondary); font-size: 0.8rem; }
+        .security-note i { color: #00C853; margin-right: 6px; }
+
+        /* Features Section */
+        .features-section { padding: 40px 0; }
+        .section-header { text-align: center; max-width: 640px; margin: 0 auto 40px; }
+        .section-header h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 800; margin-bottom: 8px; }
+        .section-header p { color: var(--text-secondary); font-size: 1rem; }
+
+        .features-grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .feature-card-3 {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+            padding: 24px 20px; text-align: center; transition: var(--transition); backdrop-filter: blur(10px);
+        }
+        .feature-card-3:hover { border-color: var(--border-hover); transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+        .feature-icon-3 {
+            width: 56px; height: 56px; border-radius: var(--radius-sm); background: var(--bg-glass);
+            display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;
+            font-size: 1.5rem; color: var(--accent); transition: var(--transition);
+        }
+        .feature-card-3:hover .feature-icon-3 { background: var(--gradient); color: white; transform: scale(1.05); }
+        .feature-card-3 h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
+        .feature-card-3 p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.5; }
+
+        /* Social Links */
+        .social-section { padding: 20px 0 40px; text-align: center; }
+        .social-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; color: var(--text); }
+        .social-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        .social-btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px 24px; border-radius: var(--radius-full); text-decoration: none;
+            font-size: 0.9rem; font-weight: 600; color: white; transition: var(--transition);
+        }
+        .social-btn:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+        .social-btn.telegram { background: #0088cc; }
+        .social-btn.youtube { background: #ff0000; }
+        .social-btn.github { background: #24292e; }
+        .social-btn i { font-size: 1.1rem; }
+
+        /* Footer */
+        .footer { margin-top: 40px; padding-top: 28px; border-top: 1px solid var(--border); text-align: center; }
+        .footer p { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; }
+        .footer strong { color: var(--text); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .content-grid { grid-template-columns: 1fr; gap: 30px; }
+            .screenshot-box, .info-box { max-width: 500px; margin: 0 auto; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 12px 14px 40px; }
+            .navbar { padding: 8px 14px; margin-bottom: 24px; }
+            .logo-text { font-size: 1.1rem; }
+            .logo-img { width: 32px; height: 32px; }
+            .nav-links { display: none; }
+            .hero-title { font-size: 2.2rem; }
+            .features-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .feature-item { font-size: 0.75rem; padding: 8px 12px; }
+            .features-grid-3 { grid-template-columns: 1fr; }
+            .btn-download { padding: 14px 32px; font-size: 1rem; width: 100%; }
+        }
+        @media (max-width: 420px) {
+            .hero-title { font-size: 1.8rem; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== BLUR BACKGROUNDS ===== -->
+    <div class="blur-bg blur-1"></div>
+    <div class="blur-bg blur-2"></div>
+    <div class="blur-bg blur-3"></div>
+
+    <div class="container">
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <img src="../assests/logo.png" alt="Logo" class="logo-img" />
+                <span class="logo-text">JEENASH<span class="highlight">ERA</span></span>
+            </a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/tools/app.html">All Apps</a>
+                <a href="/store/">Store</a>
+            </div>
+        </nav>
+
+        <!-- ===== HERO SECTION ===== -->
+        <section class="hero">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Bluetooth Audio Utility</span>
+            </div>
+            <h1 class="hero-title">
+                Ear<span class="gradient-text">Reach</span>
+            </h1>
+            <p class="hero-desc">
+                Stream live audio between your phone and compatible Bluetooth earbuds.<br />
+                <strong>Low latency · Clean interface · Audio recording</strong>
+            </p>
+        </section>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <section class="content-section">
+            <div class="content-grid">
+                <!-- Left: Screenshot -->
+                <div class="screenshot-box">
+                    <div class="screenshot-wrapper">
+                        <img src="../assests/a/earreach.png" alt="EarReach App Logo" style="object-fit: contain; padding: 40px; background: var(--bg-card);" />
+                    </div>
+                </div>
+
+                <!-- Right: Description & Download -->
+                <div class="info-box">
+                    <h2>About EarReach</h2>
+                    <p>
+                        EarReach is a smart Bluetooth audio utility app that lets you stream live audio 
+                        between your phone and compatible Bluetooth earbuds while also supporting audio recording. 
+                        It offers a clean, professional interface designed for fast access, low latency, and 
+                        an easy listening experience.
+                    </p>
+                    <p>
+                        Whether you're listening to music, taking calls, or recording audio, EarReach delivers 
+                        crystal-clear sound with minimal delay. The intuitive interface makes it easy to connect, 
+                        control, and enjoy your audio experience.
+                    </p>
+
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Low Latency</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-microphone"></i>
+                            <span>Audio Recording</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-bluetooth-b"></i>
+                            <span>Bluetooth Streaming</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-headphones"></i>
+                            <span>Earbud Compatible</span>
+                        </div>
+                    </div>
+
+                    <div class="download-section">
+                        <p class="download-info">
+                            <i class="fas fa-android" aria-hidden="true"></i>
+                            <strong>Version:</strong> 1.0.0 &nbsp;·&nbsp; <strong>Size:</strong> 16.9 MB
+                        </p>
+                        
+                        <!-- 🔴 YAHAN APNA MEDIAFIRE LINK DAALO -->
+                        <a href="https://devuploads.com/icyevwtkwfoz/earreach.apk" target="_blank" rel="noopener noreferrer" class="btn-download">
+                            <i class="fas fa-download" aria-hidden="true"></i>
+                            Download APK
+                            <span class="btn-sub">Free · Android</span>
+                        </a>
+                        
+                        <p class="security-note">
+                            <i class="fas fa-shield-alt"></i>
+                            100% safe · No permissions required · Runs locally
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FEATURES SECTION ===== -->
+        <section class="features-section">
+            <div class="section-header">
+                <h2>Why EarReach?</h2>
+                <p>Everything you need for a seamless Bluetooth audio experience</p>
+            </div>
+            <div class="features-grid-3">
+                <div class="feature-card-3">
+                    <div class="feature-icon-3"><i class="fas fa-bolt"></i></div>
+                    <h3>Low Latency</h3>
+                    <p>Stream audio with minimal delay for a smooth, uninterrupted listening experience.</p>
+                </div>
+                <div class="feature-card-3">
+                    <div class="feature-icon-3"><i class="fas fa-microphone"></i></div>
+                    <h3>Audio Recording</h3>
+                    <p>Record audio directly from your device with high-quality sound output.</p>
+                </div>
+                <div class="feature-card-3">
+                    <div class="feature-icon-3"><i class="fas fa-bluetooth-b"></i></div>
+                    <h3>Bluetooth Streaming</h3>
+                    <p>Stream audio seamlessly between your phone and compatible Bluetooth earbuds.</p>
+                </div>
+                <div class="feature-card-3">
+                    <div class="feature-icon-3"><i class="fas fa-headphones"></i></div>
+                    <h3>Earbud Compatible</h3>
+                    <p>Works with a wide range of Bluetooth earbuds for maximum compatibility.</p>
+                </div>
+                <div class="feature-card-3">
+                    <div class="feature-icon-3"><i class="fas fa-mobile-alt"></i></div>
+                    <h3>Clean Interface</h3>
+                    <p>Simple, intuitive design that makes audio control fast and effortless.</p>
+                </div>
+                <div class="feature-card-3">
+                    <div class="feature-icon-3"><i class="fas fa-shield-alt"></i></div>
+                    <h3>100% Private</h3>
+                    <p>No data collection. Everything runs locally on your device.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SOCIAL LINKS ===== -->
+        <section class="social-section">
+            <h2 class="social-title">Connect With Me</h2>
+            <div class="social-links">
+                <a href="https://t.me/jeenashG" target="_blank" rel="noopener noreferrer" class="social-btn telegram">
+                    <i class="fab fa-telegram-plane"></i> Telegram
+                </a>
+                <a href="https://www.youtube.com/@jeenashmhk" target="_blank" rel="noopener noreferrer" class="social-btn youtube">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="social-btn github">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <p>&copy; 2026 <strong>JEENASH ERA</strong>. All rights reserved.</p>
+            <p>Built with ❤️ from scratch.</p>
+        </footer>
+    </div>
+</body>
+</html>
